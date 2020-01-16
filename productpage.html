@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Product Page</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <style media="screen">
+      * {
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+      }
+      body {
+          height: 100%;
+          background: linear-gradient(90deg, #FE77CD 50%, #F9F9F9 50%);
+      }
+      .page {
+        width: 1000px;
+        margin: 0 auto;
+        font-family: sans-serif;
+      }
+      .main-container {
+        font-family: optima;
+        margin: 100px auto;
+        width: 1100px;
+        border-radius: 15px;
+        background-color: white;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+      }
+      .header-left {
+        margin-top: 30px;
+        margin-left: 40px;
+        display: flex;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .logo-name {
+        font-size: 28px;
+        margin-top: 10px;
+        margin-left: -160px;
+      }
+      .one, .two, .three, .four, .five {
+        margin-top: 50px;
+        cursor: pointer;
+      }
+      .header-right {
+        display: flex;
+        justify-content: center;
+        text-transform: uppercase;
+      }
+      .content {
+        display: flex;
+        justify-content: center;
+      }
+      .left-side {
+        width: 450px;
+        padding: 0 50px;
+      }
+      img {
+        width: 120%;
+        height: 120%;
+      }
+      .logo-image {
+        height: 100%;
+        width: 20%;
+      }
+      .center {
+        width: 450px;
+      }
+      .right-side {
+        width: 450px;
+        padding: 300px 50px 100px 200px;
+      }
+      .shoes {
+        padding-right: 30px;
+        width: 450px;
+        height: 450px;
+        position: absolute;
+        top: 200px;
+      }
+      .product-name {
+        font-weight: 900;
+        font-size: 32px;
+        padding-top: 120px;
+        text-transform: uppercase;
+      }
+      .product-description {
+        font-size: 14px;
+        opacity: 0.6;
+        margin-top: 15px;
+        line-height: 30px;
+        width: 265px;
+      }
+      .buy-button {
+        padding: 15px;
+        margin-top: 20px;
+        width: 150px;
+        text-align: center;
+        font-size: 16px;
+        color: white;
+        background: linear-gradient(0.25turn, #D73A9E, #FE77CD);
+        border-radius: 6px;
+        text-transform: uppercase;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      .logos {
+        margin-top: 133px;
+        padding-bottom: 50px;
+        float: left;
+        display: flex;
+        justify-content: center;
+        color: #FE77CD;
+        cursor: pointer;
+      }
+      .facebook {
+        padding: 5px 7px 5px 7px;
+        border: 2px solid #FE77CD;
+        border-radius: 50%;
+      }
+      .instagram {
+        padding: 5px;
+        border: 2px solid #FE77CD;
+        border-radius: 50%;
+        margin: 0 20px;
+      }
+      .twitter {
+        padding: 5px;
+        border: 2px solid #FE77CD;
+        border-radius: 50%;
+      }
+
+      .size {
+        font-weight: 600;
+        font-size: 14px;
+        padding-bottom: 5px;
+      }
+      #tickmarks {
+        display: flex;
+        justify-content: center;
+        margin-left: 40px;
+      }
+      option {
+        font-size: 12px;
+        margin-right: 25px;
+        width: 300px;
+      }
+      input {
+        width: 200px;
+      }
+
+      .discount {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+      }
+      .prompt {
+        margin-bottom: 5px;
+        margin: 0 auto;
+        font-size: 12px;
+      }
+      .email, .password {
+        width: 150px;
+        margin: 5px auto;
+        border-radius: 15px;
+        height: 30px;
+        padding: 0 10px;
+        border: 1px solid black;
+        cursor: pointer;
+        text-align: center;
+      }
+      .email:hover, .password:hover {
+        background-color: #ECECEC
+
+      }
+      .submitbtn {
+        margin: 5px auto;
+        height: 30px;
+        width: 90px;
+        border-radius: 15px;
+        color: white;
+        background: linear-gradient(0.25turn, #D73A9E, #FE77CD);
+        text-transform: uppercase;
+        transition: 0.5s;
+        cursor: pointer;
+      }
+      .sign-up {
+        margin: 0 auto;
+        font-size: 12px;
+      }
+      a {
+
+          color: #D73A9E;
+      }
+      a:hover {
+          opacity: 0.7;
+      }
+
+
+
+    </style>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        $(".header-left").mouseenter(function(){
+          $(this).css({"opacity": "0.6", "color": "#FE77CD"});
+        });
+        $(".header-left").mouseleave(function(){
+          $(this).css({"opacity": "1.0", "color": "black"});
+        });
+        $(".header-right >*").css("margin-right", "30px");
+        $(".header-right >*").mouseenter(function(){
+          $(this).css("color", "#FE77CD");
+        });
+        $(".header-right >*").mouseleave(function(){
+          $(this).css("color", "black");
+        });
+        $(".buy-button").mouseenter(function(){
+          $(this).css("opacity", "0.6");
+        });
+        $(".buy-button").mouseleave(function(){
+          $(this).css("opacity", "1.0");
+        });
+        $(".logos >*").mouseenter(function(){
+          $(this).css("opacity", "0.6");
+        });
+        $(".logos >*").mouseleave(function(){
+          $(this).css("opacity", "1.0");
+        });
+        $(".discount").hide();
+        $(".submitbtn").mouseenter(function(){
+          $(this).css("opacity", "0.6");
+        });
+        $(".submitbtn").mouseleave(function(){
+          $(this).css("opacity", "1.0");
+        });
+        $(".buy-button").click(function(){
+          $(this).hide();
+          $(".discount").show();
+          $(".logos").css("margin-top", "40px");
+        });
+        $(".email").focus(function(){
+          $(this).css("cursor", "auto");
+        });
+        $(".email").blur(function(){
+          $(this).css("cursor", "pointer");
+        });
+        $(".password").focus(function(){
+          $(this).css("cursor", "auto");
+        });
+        $(".password").blur(function(){
+          $(this).css("cursor", "pointer");
+        });
+
+
+      });
+    </script>
+
+  </head>
+  <body>
+    <div class="container">
+
+    </div>
+    <div class="page">
+        <div class="main-container">
+          <div class="header">
+            <div class="header-left">
+              <div><img src="SamplePics/download-1.png" class="logo-image"></div>
+              <div class="logo-name">Heelys</div>
+            </div>
+            <nav class="header-right">
+              <div class="one">Home</div>
+              <div class="two">Featured</div>
+              <div class="three">Product</div>
+              <div class="four">About Us</div>
+              <div class="five">Contact Us</div>
+            </nav>
+          </div>
+          <div class="content">
+            <div class="left-side">
+              <div class="product-name">Heelys Kicks</div>
+              <div class="product-description">Product Description short and concise brief intro about product</div>
+              <button class="buy-button">Buy Now</button>
+              <form class="discount">
+                  <div class="prompt">Login to your account to receive a discount</div>
+                  <input class ="email" type="text" placeholder="email">
+                  <input class ="password" type="text" placeholder="password">
+                  <input class="submitbtn" type="button" value="Log In">
+                  <div class="sign-up">Not a member? <a href="#">Sign Up</a></div>
+              </form>
+              <div class="logos">
+                <div class="facebook">Fa</div>
+                <div class="instagram">Ins</div>
+                <div class="twitter">Tw</div>
+              </div>
+            </div>
+            <div class="center">
+              <img class="shoes" src="SamplePics/he100670.jpg" alt="Product Picture">
+            </div>
+            <div class="right-side">
+                <div class="size">Apply Size</div>
+                <input type="range" list="tickmarks">
+                  <datalist id="tickmarks">
+                    <option value="0" label="9"></option>
+                    <option value="25" label="10"></option>
+                    <option value="50" label="11"></option>
+                    <option value="75" label="12"></option>
+                    <option value="100" label="13"></option>
+                  </datalist>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
