@@ -10,17 +10,13 @@
           padding: 0;
           margin: 0;
           box-sizing: border-box;
+          font-family: sans-serif;
       }
       body {
           height: 100%;
           background: linear-gradient(90deg, #FE77CD 50%, #F9F9F9 50%);
       }
-      .page {
-        width: 1000px;
-        margin: 0 auto;
-        font-family: sans-serif;
-      }
-      .main-container {
+      .container {
         font-family: optima;
         margin: 100px auto;
         width: 1100px;
@@ -99,6 +95,7 @@
       .buy-button {
         padding: 15px;
         margin-top: 20px;
+        margin-bottom: 200px;
         width: 150px;
         text-align: center;
         font-size: 16px;
@@ -110,8 +107,8 @@
         cursor: pointer;
       }
       .logos {
-        margin-top: 133px;
-        padding-bottom: 50px;
+        position: absolute;
+        top: 600px;
         float: left;
         display: flex;
         justify-content: center;
@@ -134,7 +131,6 @@
         border: 2px solid #FE77CD;
         border-radius: 50%;
       }
-
       .size {
         font-weight: 600;
         font-size: 14px;
@@ -143,25 +139,23 @@
       #tickmarks {
         display: flex;
         justify-content: center;
-        margin-left: 40px;
+        /* margin-left: 40px; */
       }
-      option {
-        font-size: 12px;
-        margin-right: 25px;
-        width: 300px;
-      }
-      input {
+      .bar {
         width: 200px;
       }
-
+      option {
+        font-size: 14px;
+        margin: 0 15px;
+      }
       .discount {
         margin-top: 15px;
         display: flex;
         flex-direction: column;
       }
       .prompt {
-        margin-bottom: 5px;
         margin: 0 auto;
+        margin-bottom: 5px;
         font-size: 12px;
       }
       .email, .password {
@@ -173,10 +167,8 @@
         border: 1px solid black;
         cursor: pointer;
         text-align: center;
-      }
-      .email:hover, .password:hover {
-        background-color: #ECECEC
-
+        outline: none;
+        transition: 0.25s;
       }
       .submitbtn {
         margin: 5px auto;
@@ -191,14 +183,21 @@
       }
       .sign-up {
         margin: 0 auto;
+        margin-bottom: 30px;
         font-size: 12px;
       }
       a {
-
           color: #D73A9E;
       }
       a:hover {
           opacity: 0.7;
+      }
+      .error-msg {
+        display: none;
+        margin: 0 auto;
+        margin-bottom: 5px;
+        font-size: 12px;
+        color: red;
       }
 
 
@@ -246,17 +245,34 @@
           $(".logos").css("margin-top", "40px");
         });
         $(".email").focus(function(){
-          $(this).css("cursor", "auto");
+          $(this).css({"cursor": "auto", "width": "180px", "border": "1px solid #D73A9E"});
         });
         $(".email").blur(function(){
-          $(this).css("cursor", "pointer");
+          $(this).css({"cursor": "pointer", "width": "150px", "border": "1px solid black"});
         });
         $(".password").focus(function(){
-          $(this).css("cursor", "auto");
+          $(this).css({"cursor": "auto", "width": "180px", "border": "1px solid #D73A9E"});
         });
         $(".password").blur(function(){
-          $(this).css("cursor", "pointer");
+          $(this).css({"cursor": "pointer", "width": "150px", "border": "1px solid black"});
         });
+
+        const myForm = document.querySelector(".discount");
+        const emailInput = document.querySelector(".email");
+        const passwordInput = document.querySelector(".password");
+        const submitbutton = document.querySelector(".submitbtn");
+
+        submitbutton.addEventListener("click", presssubmit);
+
+        function presssubmit(e){
+          e.preventDefault();
+          if (emailInput.value == '' || passwordInput.value == '') {
+            $(".error-msg").show();
+          } else {
+            alert("Welcome " + emailInput.value);
+            $(".discount").hide();
+          }
+        }
 
 
       });
@@ -264,58 +280,54 @@
 
   </head>
   <body>
-    <div class="container">
-
-    </div>
-    <div class="page">
-        <div class="main-container">
-          <div class="header">
-            <div class="header-left">
-              <div><img src="SamplePics/download-1.png" class="logo-image"></div>
-              <div class="logo-name">Heelys</div>
-            </div>
-            <nav class="header-right">
-              <div class="one">Home</div>
-              <div class="two">Featured</div>
-              <div class="three">Product</div>
-              <div class="four">About Us</div>
-              <div class="five">Contact Us</div>
-            </nav>
+      <div class="container">
+        <div class="header">
+          <div class="header-left">
+            <div><img src="Pics/download-1.png" class="logo-image"></div>
+            <div class="logo-name">Heelys</div>
           </div>
-          <div class="content">
-            <div class="left-side">
-              <div class="product-name">Heelys Kicks</div>
-              <div class="product-description">Product Description short and concise brief intro about product</div>
-              <button class="buy-button">Buy Now</button>
-              <form class="discount">
-                  <div class="prompt">Login to your account to receive a discount</div>
-                  <input class ="email" type="text" placeholder="email">
-                  <input class ="password" type="text" placeholder="password">
-                  <input class="submitbtn" type="button" value="Log In">
-                  <div class="sign-up">Not a member? <a href="#">Sign Up</a></div>
-              </form>
-              <div class="logos">
-                <div class="facebook">Fa</div>
-                <div class="instagram">Ins</div>
-                <div class="twitter">Tw</div>
-              </div>
+          <nav class="header-right">
+            <div class="one">Home</div>
+            <div class="two">Featured</div>
+            <div class="three">Product</div>
+            <div class="four">About Us</div>
+            <div class="five">Contact Us</div>
+          </nav>
+        </div>
+        <div class="content">
+          <div class="left-side">
+            <div class="product-name">Heelys Kicks</div>
+            <div class="product-description">Product Description short and concise brief intro about product</div>
+            <button class="buy-button">Buy Now</button>
+            <form class="discount" action="index.html" method="post">
+                <div class="prompt">Login to your account to receive a discount</div>
+                <div class="error-msg">Please fill in both fields</div>
+                <input class ="email" type="text" placeholder="Email">
+                <input class ="password" type="password" placeholder="Password">
+                <input class="submitbtn" type="submit" value="Log In">
+                <div class="sign-up">Not a member? <a href="#">Sign Up</a></div>
+            </form>
+            <div class="logos">
+              <div class="facebook">Fa</div>
+              <div class="instagram">Ins</div>
+              <div class="twitter">Tw</div>
             </div>
-            <div class="center">
-              <img class="shoes" src="SamplePics/he100670.jpg" alt="Product Picture">
-            </div>
-            <div class="right-side">
-                <div class="size">Apply Size</div>
-                <input type="range" list="tickmarks">
-                  <datalist id="tickmarks">
-                    <option value="0" label="9"></option>
-                    <option value="25" label="10"></option>
-                    <option value="50" label="11"></option>
-                    <option value="75" label="12"></option>
-                    <option value="100" label="13"></option>
-                  </datalist>
-            </div>
+          </div>
+          <div class="center">
+            <img class="shoes" src="Pics/he100670.jpg" alt="Product Picture">
+          </div>
+          <div class="right-side">
+              <div class="size">Apply Size</div>
+              <input type="range" list="tickmarks" class="bar">
+                <datalist id="tickmarks">
+                  <option value="0" label="10"></option>
+                  <option value="25" label="11"></option>
+                  <option value="50" label="12"></option>
+                  <option value="75" label="13"></option>
+                  <option value="100" label="14"></option>
+                </datalist>
           </div>
         </div>
-    </div>
+      </div>
   </body>
 </html>
